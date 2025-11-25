@@ -2,12 +2,13 @@ package org.example;
 
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 public class Main {
+
     static Scanner sc = new Scanner(System.in);
     static Main caller = new Main();
+
     public static void main(String[] args) {
-         // for calling other methods
+        // for calling other methods
         caller.menu();
         caller.sendNum();
 
@@ -26,21 +27,20 @@ public class Main {
         System.out.println("The Range will be between 10 to 500");
     }
 
-    void sendNum (){
+    void sendNum() {
 
         int answer = (int) (Math.random() * (500 - 10 + 1)) + 10;
         System.out.println("Make Your 1st guess");
 
         for (int i = 10; i > -1; i--) {
             int choice;
-            while(true){
+            while (true) {
                 if (sc.hasNextInt()) {
                     choice = sc.nextInt();
 
-                    if (10<=choice && choice<=500) {
-                    break;
-                    }
-                    else {
+                    if (10 <= choice && choice <= 500) {
+                        break;
+                    } else {
                         System.out.println("number shall be between 10 and 500");
                     }
                 } else {
@@ -49,17 +49,16 @@ public class Main {
                 }
             }
 
-            boolean camback = caller.Guess(choice,answer,i);
+            boolean camback = caller.Guess(choice, answer, i);
             if (camback) {
                 System.out.println("Your guess is correct");
                 int j = 10 - i;
-                System.out.println("You dit it in: "+ j + "attempts");
+                System.out.println("You dit it in: " + j + "attempts");
                 break;
 
-            } else if(i>0){
+            } else if (i > 0) {
                 System.out.println("Lives remain: " + i);
-            }
-            else {
+            } else {
                 System.out.println("All Lives Exhausted, Bad Luck or Shall I say Bad Guess");
                 System.out.println("Answer was: " + answer);
                 break;
@@ -70,20 +69,18 @@ public class Main {
 
     boolean Guess(int num, int answer, int i) {
 
-        if (num == answer ) {
+        if (num == answer) {
             System.out.println("Congo");
             return true;
-        }
-        else if (num < answer&& i>0) {
+        } else if (num < answer && i > 0) {
             System.out.println("Try higher than this");
             return false;
-        }
-        else if (num > answer&& i>0) {
+        } else if (num > answer && i > 0) {
             System.out.println("Try lower than this");
             return false;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
 }
